@@ -1,4 +1,17 @@
-books = []
+books = {}
+
+def add_book():
+    name = input("Type name: ")
+    author = input("Type author: ")
+    books[name] = author
+    print(f"The '{name}' book is added.")
+
+def print_books():
+    if books:
+        for name, author in books.items():
+            print(f"Name: {name}, Author: {author}")
+    else:
+        print("Book list is empty.")
 
 while True:
     print("\n1. Add Book")
@@ -8,17 +21,9 @@ while True:
     number = input("Type: ")
 
     if number == '1':
-        name = input("Type name: ")
-        author = input("Type author: ")
-        books.append((name, author))
-        print(f"The '{name}' book is added.")
+        add_book()
     elif number == '2':
-        if books:
-            for i in range(len(books)):
-                print(f"{i + 1}. Name: {books[i][0]}, Author: {books[i][1]}")
-
-        else:
-            print("Book list is empty.")
+        print_books()
     elif number == '3':
         break
     else:
